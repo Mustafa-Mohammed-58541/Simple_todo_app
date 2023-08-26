@@ -1,0 +1,26 @@
+<h1>
+To DO APP
+</h1>
+<form method="POST" action="/">
+    {% csrf_token %}
+    {{form.title}}
+    <input type ="submit" name="Create task" >
+ 
+</form>
+ 
+
+{%for ts in task %}
+<div class="center-cloumn">
+    <a href="{% url 'update_task' ts.id %}"  >  update   </a>
+    <a href="{%url 'delete'      ts.id  %}"> delete </a>
+    <br>
+    {%if ts.complete == True %}
+    <strike > {{ts}}  </strike>
+    {%else %}
+    <span>  {{ts}}   </span>
+    {%endif%}
+  </div>
+    
+{%endfor%} 
+  <a> just for display = </a>  
+<p>{{task}}   </p>
